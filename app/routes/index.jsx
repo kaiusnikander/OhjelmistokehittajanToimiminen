@@ -1,18 +1,19 @@
 
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { getOstoslista} from "~/api.server";
+import { haeBitcoininHinta, getOstoslista} from "~/api.server";
 import { Link } from "@remix-run/react";
 
 
 export const loader = async () => {
   const ostoslista = await getOstoslista();
-  return json(ostoslista);
+  const bitcoininHinta = await haeBitcoininHinta();
+  return json({ ostoslista, bitcoininHinta });
 };
 
 export default function Index() {
-  const ostoslista = useLoaderData();
-  const arvo = 20378.06
+  const {ostoslista, bitcoininHinta} = useLoaderData();
+  const arvo = bitcoininHinta.bpi.EUR.rate_float
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
