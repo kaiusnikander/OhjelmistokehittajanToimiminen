@@ -23,7 +23,7 @@ export default function Index() {
           const nimi = ostos.nimi;
           const hinta = ostos.hinta;
           let lasku = hinta/arvo;
-          return <li key={index}>{nimi} = {lasku}</li>;
+          return <li key={index}>{nimi} = {lasku} ₿</li>;
         })}
       </ul>
     </div>
