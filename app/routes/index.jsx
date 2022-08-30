@@ -1,6 +1,6 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { getOstoslista } from "~/api.server";
+import { getOstoslista} from "~/api.server";
 
 export const loader = async () => {
   const ostoslista = await getOstoslista();
@@ -9,6 +9,7 @@ export const loader = async () => {
 
 export default function Index() {
   const ostoslista = useLoaderData();
+  const arvo = 20378.06
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
@@ -16,14 +17,9 @@ export default function Index() {
       <ul>
         {ostoslista.map((ostos, index) => {
           const nimi = ostos.nimi;
-          if (ostos.hankittu) {
-            return (
-              <li key={index}>
-                <s>{nimi}</s>
-              </li>
-            );
-          }
-          return <li key={index}>{nimi}</li>;
+          const hinta = ostos.hinta;
+          let lasku = hinta/arvo;
+          return <li key={index}>{nimi} = {lasku}</li>;
         })}
       </ul>
     </div>
