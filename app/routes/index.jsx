@@ -1,3 +1,4 @@
+
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { getOstoslista} from "~/api.server";
@@ -16,6 +17,7 @@ export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Funikulaarin ja Logomon sillan hinta Bitcoineina</h1>
+      <Link to="/admin">Hallintasivu</Link>{""}
       <ul>
         {ostoslista.map((ostos, index) => {
           const nimi = ostos.nimi;
@@ -24,7 +26,6 @@ export default function Index() {
           return <li key={index}>{nimi} = {lasku}</li>;
         })}
       </ul>
-      <Link to="/admin">Hallintasivu</Link>{""}
     </div>
   );
 }
