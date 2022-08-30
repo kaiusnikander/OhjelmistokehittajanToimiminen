@@ -1,6 +1,8 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { getOstoslista} from "~/api.server";
+import { Link } from "@remix-run/react";
+
 
 export const loader = async () => {
   const ostoslista = await getOstoslista();
@@ -22,6 +24,7 @@ export default function Index() {
           return <li key={index}>{nimi} = {lasku}</li>;
         })}
       </ul>
+      <Link to="/admin">Hallintasivu</Link>{""}
     </div>
   );
 }
