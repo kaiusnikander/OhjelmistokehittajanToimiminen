@@ -10,6 +10,23 @@ export default function Admin() {
         <nav>
         <Link to="/">Pääsivu</Link>{""}
         </nav>
+        <form method="post" action="/projects/new">
+      <p>
+        <label>
+          Muuttajan nimi: <input name="name" type="text" />
+        </label>
+      </p>
+      <p>
+        <label>
+          Muutos:
+          <br />
+          <textarea name="description" />
+        </label>
+      </p>
+      <p>
+        <button type="submit">Create</button>
+      </p>
+    </form>
         </div>  
     );
 
