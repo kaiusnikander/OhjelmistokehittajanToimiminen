@@ -1,18 +1,10 @@
 [
     {
-      "nimi": "Pizza",
-      "hankittu": true
+      "nimi": "Funikulaari",
+      "hinta": 5600000
     },
     {
-      "nimi": "Kokis",
-      "hankittu": true
-    },
-    {
-      "nimi": "Sipsejä",
-      "hankittu": false
-    },
-    {
-      "nimi": "Leipää",
-      "hankittu": false
+      "nimi": "Logomon silta",
+      "hinta": 21600000
     }
-  ]
+]
