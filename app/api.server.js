@@ -19,7 +19,7 @@ export const päivitäOstoslista = async (rivi) => {
   ostoslista[rivi.index] = {
     ...muokattavaRivi,
     nimi: rivi.nimi,
-    määrä: Number(rivi.määrä),
+    hinta: Number(rivi.hinta),
   };
   
   const pävitettyOstoslistaJSON = JSON.stringify(ostoslista, null, 2);

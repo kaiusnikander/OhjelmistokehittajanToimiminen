@@ -30,7 +30,7 @@ export default function Admin() {
               </label>{" "}
               <label>
                 Määrä:{" "}
-                <input name="määrä" type="number" defaultValue={ostos.määrä} />
+                <input name="määrä" type="number" defaultValue={ostos.hinta} />
               </label>
               <input type="hidden" name="index" value={index} />
               <button>Tallenna</button>
