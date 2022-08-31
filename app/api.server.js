@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 
 export const getOstoslista = async () => {
   const ostoslista = await readFile("data/ostoslista.json");
