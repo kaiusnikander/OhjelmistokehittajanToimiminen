@@ -1,35 +1,42 @@
+import { json } from "@remix-run/node";
+import { useLoaderData, Form, Link } from "@remix-run/react";
+import { getOstoslista, päivitäOstoslista} from "~/api.server";
 
-import { useLoaderData } from "@remix-run/react";
-import { Link } from "@remix-run/react";
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const values = Object.fromEntries(formData);
+  päivitäOstoslista(values);
+
+  return null;
+};
+
+export const loader = async () => {
+  const ostoslista = await getOstoslista();
+  return json(ostoslista);
+};
 
 export default function Admin() {
     const ostoslista = useLoaderData();
 
     return (
       <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
+        <Link to="/">Etusivu</Link>
         <h1>Hallintasivu</h1>
-        <nav>
-        <Link to="/">Pääsivu</Link>{""}
-        </nav>
-        <form method="post" action="/projects/new">
-      <p>
-        <label>
-          Muuttajan nimi: <input name="name" type="text" />
-        </label>
-      </p>
-      <p>
-        <label>
-          Muutos:
-          <br />
-          <textarea name="description" />
-        </label>
-      </p>
-      <p>
-        <button type="submit">Create</button>
-      </p>
-    </form>
-        </div>  
+        {ostoslista.map((ostos, index) => (
+          <div key={index}>
+            <Form method="post">
+              <label>
+                Nimi: <input name="nimi" defaultValue={ostos.nimi} />
+              </label>{" "}
+              <label>
+                Määrä:{" "}
+                <input name="hinta" type="number" defaultValue={ostos.määrä} />
+              </label>
+              <input type="hidden" name="index" value={index} />
+              <button>Tallenna</button>
+            </Form>
+          </div>
+        ))}
+      </div>
     );
-
-    }
-  
+  }
